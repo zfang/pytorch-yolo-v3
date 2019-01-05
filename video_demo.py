@@ -7,8 +7,6 @@ import pickle as pkl
 import random
 import time
 
-from torch.nn import DataParallel
-
 from darknet import Darknet
 from preprocess import letterbox_image
 from util import *
@@ -109,7 +107,6 @@ if __name__ == '__main__':
     assert inp_dim > 32
 
     if CUDA:
-        model = DataParallel(model)
         model.cuda()
 
     model(get_test_input(inp_dim, CUDA), CUDA)
